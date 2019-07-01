@@ -56,14 +56,14 @@ app.locals.title = "Express - Generated with IronGenerator";
 const index = require("./routes/index");
 const dayclothes = require("./routes/dayclothes");
 const manage = require("./routes/manage");
-const signin = require("./routes/signin");
+const login = require("./routes/login");
 const homepage = require("./routes/homepage");
 const viewall = require("./routes/viewall.js");
 const viewone = require("./routes/viewone.js");
 
 app.use("/", index);
 app.use(manage);
-app.use(signin);
+app.use(login);
 app.use(homepage);
 app.use(viewall);
 app.use(viewone);

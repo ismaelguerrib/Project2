@@ -6,11 +6,9 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 /* GET sign in page */
-router.get("/", (req, res, next) => {
-  res.render("login");
-});
 
 router.post("/", (req, res, next) => {
+  console.log(req.body);
   const name = req.body.name;
   const lastname = req.body.lastname;
   const email = req.body.email;
@@ -25,8 +23,9 @@ router.post("/", (req, res, next) => {
   ) {
     res.render("/", { message: "fill out all the form to sign up" });
   }
+
   const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(pass, salt);
+  const hashPass = bcrypt.hashSync(password, salt);
 
   const newUser = new User({
     name: name,
@@ -42,6 +41,9 @@ router.post("/", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
+router.get("/", (req, res, next) => {
+  res.render("signin");
+});
 /* GET home page */
 
 router.get("/homepage", (req, res, next) => {
