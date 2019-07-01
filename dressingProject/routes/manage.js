@@ -11,6 +11,7 @@ router.post("/manage", (req, res) => {
   const {
     name,
     brand,
+    size,
     type,
     category,
     price,
@@ -21,6 +22,7 @@ router.post("/manage", (req, res) => {
   if (
     !name ||
     !brand ||
+    !size ||
     !type ||
     !category ||
     !price ||
@@ -31,16 +33,18 @@ router.post("/manage", (req, res) => {
     res.render("manage", { error: "Invalid input" });
     return;
   }
-  Product.create({
-    name,
-    brand,
-    type,
-    category,
-    price,
-    addeddate,
-    weareddate,
-    season
-  })
+  clothes
+    .create({
+      name,
+      brand,
+      size,
+      type,
+      category,
+      price,
+      addeddate,
+      weareddate,
+      season
+    })
     .then(() => res.redirect("/views"))
     .catch(err => console.log(err));
 });

@@ -1,0 +1,75 @@
+<div class="big-container product-manage-wrapper flexed-item">
+    <form method="post" action="./manage" class="add-product-form">
+        <h3 class="form-title">Add Youre Clothes to the collection</h3>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-name" class="label-name label">Clothes name</label>
+            <input type="text" class="input-text input" placeholder="Black Tee-Shirt" name="name">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="brand" class="label-ref label">Brand </label>
+            <input type="text" class="input-text input" placeholder="ex: NV23498" name="brand">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-size" class="label-ref label">Size</label>
+            <input type="text" class="input-text input" placeholder="ex: M" name="sizes">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="cloth-type" class="label-ref label">Type</label>
+            <select name="type" id="secondary_category" class="select">
+                <option value="">Choose Youre Clothes Type...</option>
+                <option value="">Top</option>
+                <option value="">Bottom</option>
+                <option value="">Shoes</option>
+                <option value="">Accesoires</option>
+            </select>
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-category" class="label-ref label">Category</label>
+            <input type="text" class="input-text input" placeholder="Tee-shirt" name="category">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-price" class="label-ref label">Price</label>
+            <input type="number" class="input-text input" placeholder="ex: $30" name="price">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-addeddate" class="label-ref label">Added Date</label>
+            <input type="date" class="input-text input" placeholder="10-07-2019" name="addeddate">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-weareddate" class="label-ref label">Weared Date</label>
+            <input type="date" class="input-text input" placeholder="ex: M" name="weareddate">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="clothes-season" class="label-ref label">Season</label>
+            <input type="text" class="input-text input" placeholder="Summer" name="sizes">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="sneacker-descr" class="label-descr label">Description</label>
+            <input type="text" class="input-text input" placeholder="The better sneakers to run" name="description">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label for="sneacker-price" class="label-price label">Price</label>
+            <input type="number" class="sneacker-price input" min="1" name="price">
+        </div>
+        <div class="form-item-wrapper flexed-item">
+            <label class="label">Collection</label>
+            <select name="sneacker-secondary-cat" id="secondary_category" class="select">
+                <option value="">Choose a collection to youre clothe...</option>
+                <option value="">Casual</option>
+                <option value="">Urban style</option>
+                <option value="">Dope</option>
+                <option value="">Chic</option>
+            </select>
+        </div>
+        <button class="button-primary add-sneacker-btn">Add to collection</button>
+    </form>
+
+    <form action="POST" class="add-category-form">
+        <h3 class="form-title">Add collection</h3>
+        <div class="form-item-wrapper flexed-item">
+            <label for="category-name" class="category-name label">Sneaker tag</label>
+            <input type="text" class="input" placeholder="ex: Gangsta">
+        </div>
+        <button class="button-primary add-category-btn">Create this category</button>
+    </form>
+</div>
