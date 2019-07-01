@@ -8,8 +8,8 @@
 }
 
 /* .nav-link-wrapper{
-  width: 50%;
-  } */
+width: 50%;
+} */
 
 .nav-wrapper {
   border-bottom: 1px solid rgb(212, 212, 212);
@@ -22,7 +22,7 @@
 }
 
 h2.logo-item {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .nav-item {
