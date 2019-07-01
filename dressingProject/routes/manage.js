@@ -19,6 +19,7 @@ router.post("/manage", (req, res) => {
     weareddate,
     season
   } = req.body;
+  console.log("ICII", req.body);
   if (
     !name ||
     !brand ||
@@ -48,3 +49,5 @@ router.post("/manage", (req, res) => {
     .then(() => res.redirect("/views"))
     .catch(err => console.log(err));
 });
+
+module.exports = router;

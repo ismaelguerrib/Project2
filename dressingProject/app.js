@@ -53,6 +53,8 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
+const manage = require("./routes/manage");
 app.use("/", index);
+app.use(manage);
 
 module.exports = app;
