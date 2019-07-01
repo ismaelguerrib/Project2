@@ -4,7 +4,7 @@ const app = express();
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("homepage");
+  res.render("login");
 });
 
 /* GET manage page */
