@@ -3,6 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
+<<<<<<< HEAD
+  color: #00B7FF; }
+=======
   color: #00b7ff; }
 
 .header {
@@ -74,5 +77,6 @@ h2.logo-item {
   color: black;
   cursor: pointer;
   transition: all 0.2s ease-in; }
+>>>>>>> e4b8d2a5e1e53045c61cb6ac245ef3b444611fa2
 
 /*# sourceMappingURL=style.css.map */
