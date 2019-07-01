@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const clothesSchema = new Schema({
   name: { type: String, required: true },
   brand: String,
+  size: String,
   type: { type: String, required: true },
   category: { type: String, required: true },
   price: { type: Number, required: true },

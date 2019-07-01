@@ -11,6 +11,7 @@ router.post("/manage", (req, res) => {
   const {
     name,
     brand,
+    size,
     type,
     category,
     price,
@@ -21,6 +22,7 @@ router.post("/manage", (req, res) => {
   if (
     !name ||
     !brand ||
+    !size ||
     !type ||
     !category ||
     !price ||
@@ -35,6 +37,7 @@ router.post("/manage", (req, res) => {
     .create({
       name,
       brand,
+      size,
       type,
       category,
       price,
