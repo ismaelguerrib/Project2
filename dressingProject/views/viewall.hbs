@@ -1,1 +1,36 @@
 {{> navbar }}
+
+<div class="main-content-products flexed-item big-container">
+
+    {{!-- CATEGORY --}}
+    <aside class="category-wrapper">
+        <h4 class="category-title">All Tags</h4>
+        <ul class="category-list">
+            <li class="category-list-item"> <a href="">Tag 1</a> </li>
+            <li class="category-list-item"> <a href="">Tag 2</a></li>
+            <li class="category-list-item"> <a href="">Tag 3</a></li>
+        </ul>
+    </aside>
+
+    {{!-- PRODUCTS--}}
+    <section class="products-wrapper">
+        <div class="products-infos">
+            <h4 class="products-title">{{title}} collection <span class="products-count">({{product.length}})</span>
+            </h4>
+            <p class="products-subtitle">Prepare for your miles with the latest styles and colors of {{title}}’s running
+                shoes.
+                Take advantage of signature a footwear technologies including Zoom, Flyknite, and find the
+                pairs running shoes that align with your running philosophy.</p>
+        </div>
+        <div class="products-grid flexed-item">
+            {{#each clothes}}
+            <a href="/one-product/{{this._id}}" class="product-item-wrapper">
+                <div class="product-img"><img src="{{this.img}}" alt="shoe"></div>
+                <p class="product-name">{{this.name}}</p>
+                <p class="product-cat">{{this.category}}</p>
+                <p class="product-price">${{this.price}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </section>
+</div>

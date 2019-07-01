@@ -1,5 +1,6 @@
 @import "./header-nav.css";
-
+@import "./manage.css";
+@import "./form.css";
 @import url("https://fonts.googleapis.com/css?family=Faster+One|Oswald:300,400,500,700|Source+Sans+Pro:300,400,600,700&display=swap");
 
 * {

@@ -15,13 +15,15 @@
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="cloth-type" class="label-ref label">Type</label>
+            {{#each types}}
             <select name="type" id="secondary_category" class="select">
-                <option value="">Choose Youre Clothes Type...</option>
-                <option value="">Top</option>
+                <option value="">Create Youre Clothes Type...</option>
+                <option value="5d1a3c8a25974c56a32e08e4">Top</option>
                 <option value="">Bottom</option>
                 <option value="">Shoes</option>
                 <option value="">Accesoires</option>
             </select>
+            {{/each}}
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="clothes-category" class="label-ref label">Category</label>
@@ -46,9 +48,9 @@
 
         <div class="form-item-wrapper flexed-item">
             <label class="label">Collection</label>
-            <select name="sneacker-secondary-cat" id="secondary_category" class="select">
+            <select name="dz" id="secondary_category" class="select">
                 <option value="">Choose a collection to youre clothe...</option>
-                <option value="">Casual</option>
+                <option value="5d1a3c8a25974c56a32e08e4">Casual</option>
                 <option value="">Urban style</option>
                 <option value="">Dope</option>
                 <option value="">Chic</option>
