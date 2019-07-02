@@ -10,8 +10,7 @@ const clothesSchema = new Schema({
   addeddate: { type: Date },
   weareddate: { type: Date },
   season: { type: String },
-  imgPath: String,
-  imgName: String,
+  image: String,
   collec: { type: [Schema.Types.ObjectId], ref: "collection" }
 });
 

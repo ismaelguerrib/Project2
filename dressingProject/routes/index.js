@@ -51,8 +51,5 @@ router.get("/homepage", (req, res, next) => {
 });
 
 /* GET manage page */
-router.get("/manage", (req, res, next) => {
-  res.render("manage");
-});
 
 module.exports = router;

@@ -1,24 +1,32 @@
 const express = require("express");
 const router = new express.Router();
 const clothes = require("../models/clothes");
+const collectionName = require("../models/collection");
 const hbs = require("hbs");
 const uploadCloud = require("../config/cloudinary");
 
 router.get("/manage", (req, res) => {
-  res.render("manage");
+  console.log("YOYOYOYOYOO");
+  collectionName
+    .find()
+    .then(dbRes => {
+      console.log(dbRes);
+      res.render("manage", { dbRes });
+    })
+    .catch(err => console.log(err));
 });
 
-router.post("/manage", uploadCloud.single("photo"), (req, res) => {
+router.post("/manage", uploadCloud.single("image"), (req, res) => {
   const {
     name,
     brand,
     size,
     type,
-    category,
     price,
     addeddate,
     weareddate,
-    season
+    season,
+    collec
   } = req.body;
   const imgPath = req.file.url;
   const imgName = req.file.orginalName;
@@ -39,19 +47,18 @@ router.post("/manage", uploadCloud.single("photo"), (req, res) => {
   // }
   clothes
     .create({
-      imgPath,
-      imgName,
       name,
       brand,
       size,
       type,
-      category,
       price,
       addeddate,
       weareddate,
-      season
+      season,
+      collec,
+      image: imgPath
     })
-    .then(() => res.redirect("/viewall"))
+    .then(dbRes => res.redirect("/viewall"))
     .catch(err => console.log(err));
 });
 

@@ -5,7 +5,7 @@
         <h3 class="form-title">Add Youre Clothes to the collection</h3>
 
         <label for="clothes-pic" class="label-name label">Clothes picture</label>
-        <input type="file" class="input-text input" name="photo">
+        <input type="file" class="input-text input" name="image">
 
 
 
@@ -19,7 +19,7 @@
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="clothes-size" class="label-ref label">Size</label>
-            <input type="text" class="input-text input" placeholder="ex: M" name="sizes">
+            <input type="text" class="input-text input" placeholder="ex: M" name="size">
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="cloth-type" class="label-ref label">Type</label>
@@ -30,10 +30,10 @@
             </select>
 
         </div>
-        <div class="form-item-wrapper flexed-item">
+        {{!-- <div class="form-item-wrapper flexed-item">
             <label for="clothes-category" class="label-ref label">Category</label>
             <input type="text" class="input-text input" placeholder="Tee-shirt" name="category">
-        </div>
+        </div> --}}
         <div class="form-item-wrapper flexed-item">
             <label for="clothes-price" class="label-ref label">Price</label>
             <input type="number" class="input-text input" placeholder="ex: $30" name="price">
@@ -48,17 +48,17 @@
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="clothes-season" class="label-ref label">Season</label>
-            <input type="text" class="input-text input" placeholder="Summer" name="sizes">
+            <input type="text" class="input-text input" placeholder="Summer" name="season">
         </div>
 
         <div class="form-item-wrapper flexed-item">
             <label class="label">Collection</label>
-            <select name="dz" id="secondary_category" class="select">
+            <select name="collec" id="secondary_category" class="select">
+
                 <option value="">Choose a collection to youre clothe...</option>
-                <option value="5d1a3c8a25974c56a32e08e4">Casual</option>
-                <option value="">Urban style</option>
-                <option value="">Dope</option>
-                <option value="">Chic</option>
+                {{#each dbRes}}
+                <option value="{{this._id}}"> {{this.label}}</option>
+                {{/each}}
             </select>
         </div>
         <button class="button-primary add-sneacker-btn">Add to collection</button>
