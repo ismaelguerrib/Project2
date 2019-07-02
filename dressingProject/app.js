@@ -60,6 +60,7 @@ const login = require("./routes/login");
 const homepage = require("./routes/homepage");
 const viewall = require("./routes/viewall.js");
 const viewone = require("./routes/viewone.js");
+const dashboard = require("./routes/dashboard.js");
 
 app.use("/", index);
 app.use(manage);
@@ -68,5 +69,6 @@ app.use(homepage);
 app.use(viewall);
 app.use(viewone);
 app.use(dayclothes);
+app.use(dashboard);
 
 module.exports = app;

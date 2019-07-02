@@ -1,8 +1,8 @@
 const express = require("express");
 const router = new express.Router();
 
-router.get("/homepage", (req, res, next) => {
-  res.render("homepage");
+router.get("/dashboard", (req, res, next) => {
+  res.render("dashboard");
 });
 
 module.exports = router;

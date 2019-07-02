@@ -4,8 +4,10 @@ const hbs = require("hbs");
 const router = new express.Router();
 const Type = require("../models/Types");
 
+//////GET/////
+
 ///////AFFICHAGE DYNAMIQUE//////////
-router.get("/views", (req, res) => {
+router.get("/viewall", (req, res) => {
   clothes
     .find()
     .then(dbRes => res.render("viewall", { clothes: dbRes }))
