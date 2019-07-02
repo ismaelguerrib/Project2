@@ -2,7 +2,7 @@ const express = require("express");
 const clothes = require("../models/clothes");
 const hbs = require("hbs");
 const router = new express.Router();
-const Type = require("../models/Types");
+const Type = require("../models/collection");
 
 //////GET/////
 

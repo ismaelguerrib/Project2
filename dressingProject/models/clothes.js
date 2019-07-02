@@ -11,7 +11,8 @@ const clothesSchema = new Schema({
   weareddate: { type: Date },
   season: { type: String },
   imgPath: String,
-  imgName: String
+  imgName: String,
+  collec: { type: [Schema.Types.ObjectId], ref: "collection" }
 });
 
 const Clothes = mongoose.model("Clothes", clothesSchema);

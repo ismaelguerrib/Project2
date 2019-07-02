@@ -61,6 +61,7 @@ const homepage = require("./routes/homepage");
 const viewall = require("./routes/viewall.js");
 const viewone = require("./routes/viewone.js");
 const dashboard = require("./routes/dashboard.js");
+const collection = require("./routes/collection");
 
 app.use("/", index);
 app.use(manage);
@@ -70,5 +71,6 @@ app.use(viewall);
 app.use(viewone);
 app.use(dayclothes);
 app.use(dashboard);
+app.use(collection);
 
 module.exports = app;

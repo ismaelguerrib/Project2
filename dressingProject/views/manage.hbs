@@ -64,11 +64,11 @@
         <button class="button-primary add-sneacker-btn">Add to collection</button>
     </form>
 
-    <form action="POST" class="add-category-form">
+    <form action="/collection" method="POST" class="add-category-form">
         <h3 class="form-title">Add collection</h3>
         <div class="form-item-wrapper flexed-item">
             <label for="category-name" class="category-name label">Create a new collection</label>
-            <input type="text" class="input" placeholder="ex: Gangsta">
+            <input type="text" class="input" name="collection" placeholder="ex: Gangsta">
         </div>
         <button class="button-primary add-category-btn">Create this category</button>
     </form>
