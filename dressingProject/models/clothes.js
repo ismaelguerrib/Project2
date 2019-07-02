@@ -8,7 +8,6 @@ const clothesSchema = new Schema({
   type: { type: String, enum: ["Top", "Jean"] },
   price: { type: Number },
   addeddate: { type: Date },
-  weareddate: { type: Date },
   season: { type: String },
   image: String,
   collec: { type: [Schema.Types.ObjectId], ref: "collection" }
