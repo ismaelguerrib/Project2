@@ -2,12 +2,13 @@ const express = require("express");
 const router = new express.Router();
 const clothes = require("../models/clothes");
 const hbs = require("hbs");
+const uploadCloud = require("../config/cloudinary");
 
 router.get("/manage", (req, res) => {
   res.render("manage");
 });
 
-router.post("/manage", (req, res) => {
+router.post("/manage", uploadCloud.single("photo"), (req, res) => {
   const {
     name,
     brand,
@@ -19,6 +20,8 @@ router.post("/manage", (req, res) => {
     weareddate,
     season
   } = req.body;
+  const imgPath = req.file.url;
+  const imgName = req.file.orginalName;
   console.log("ICII", req.body);
   // if (
   //   !name ||
@@ -36,6 +39,8 @@ router.post("/manage", (req, res) => {
   // }
   clothes
     .create({
+      imgPath,
+      imgName,
       name,
       brand,
       size,
@@ -46,7 +51,7 @@ router.post("/manage", (req, res) => {
       weareddate,
       season
     })
-    .then(() => res.redirect("/views"))
+    .then(() => res.redirect("/viewall"))
     .catch(err => console.log(err));
 });
 

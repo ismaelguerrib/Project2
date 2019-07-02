@@ -5,12 +5,13 @@ const clothesSchema = new Schema({
   name: { type: String },
   brand: String,
   size: String,
-  type: { type: Schema.Types.ObjectId, ref: "Type" },
+  type: { type: String, enum: ["Top", "Jean"] },
   price: { type: Number },
-  addeddate: { type: Number },
-  weareddate: { type: Number },
+  addeddate: { type: Date },
+  weareddate: { type: Date },
   season: { type: String },
-  img: { type: String, default: "public/images/black-tee.png" }
+  imgPath: String,
+  imgName: String
 });
 
 const Clothes = mongoose.model("Clothes", clothesSchema);
