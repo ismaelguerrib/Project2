@@ -5,7 +5,7 @@ const collection = require("../models/collection");
 
 router.post("/collection", (req, res, next) => {
   collection
-    .create({ label: req.body.collection })
+    .create(req.body)
     .then(() => res.redirect("/viewall"))
     .catch(err => res.redirect("/manage"));
 });

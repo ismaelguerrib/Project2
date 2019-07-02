@@ -6,11 +6,9 @@ const hbs = require("hbs");
 const uploadCloud = require("../config/cloudinary");
 
 router.get("/manage", (req, res) => {
-  console.log("YOYOYOYOYOO");
   collectionName
     .find()
     .then(dbRes => {
-      console.log(dbRes);
       res.render("manage", { dbRes });
     })
     .catch(err => console.log(err));
@@ -24,13 +22,10 @@ router.post("/manage", uploadCloud.single("image"), (req, res) => {
     type,
     price,
     addeddate,
-    weareddate,
     season,
     collec
   } = req.body;
   const imgPath = req.file.url;
-  const imgName = req.file.orginalName;
-  console.log("ICII", req.body);
   // if (
   //   !name ||
   //   !brand ||
@@ -53,7 +48,6 @@ router.post("/manage", uploadCloud.single("image"), (req, res) => {
       type,
       price,
       addeddate,
-      weareddate,
       season,
       collec,
       image: imgPath

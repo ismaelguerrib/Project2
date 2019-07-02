@@ -9,4 +9,10 @@ router.get("/viewone/:id", (req, res, next) => {
     .catch();
 });
 
+router.get("/delete/:id", (req, res) => {
+  cloth
+    .findByIdAndDelete(req.params.id)
+    .then(() => res.redirect("/viewall").catch(err => console.log(err)));
+});
+
 module.exports = router;

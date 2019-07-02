@@ -50,6 +50,4 @@ router.get("/homepage", (req, res, next) => {
   res.render("homepage");
 });
 
-/* GET manage page */
-
 module.exports = router;
