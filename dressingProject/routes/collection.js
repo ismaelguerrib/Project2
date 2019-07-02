@@ -7,7 +7,9 @@ router.post("/collection", (req, res, next) => {
   collection
     .create({ label: req.body.collection })
     .then(() => res.redirect("manage"))
-    .catch(err => res.render("manage", { message: "error" }));
+    .catch(err =>
+      res.render("manage", { message: "this collection already exists" })
+    );
 });
 
 module.exports = router;
