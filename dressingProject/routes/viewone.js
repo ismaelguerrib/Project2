@@ -15,4 +15,41 @@ router.get("/delete/:id", (req, res) => {
     .then(() => res.redirect("/viewall").catch(err => console.log(err)));
 });
 
+router.get("/edit/:id", (req, res) => {
+  cloth
+    .findById(req.params.id)
+    .then(updateClothe => res.render("manage", { updateClothe }))
+    .catch(err => console.log(err));
+});
+
+router.post("/manage", (req, res) => {
+  // const {
+  //   name,
+  //   brand,
+  //   size,
+  //   type,
+  //   price,
+  //   addeddate,
+  //   season,
+  //   collec
+  // } = req.body;
+  clothe
+    .updateOne(
+      { _id: req.params.id },
+      {
+        name,
+        brand,
+        size,
+        type,
+        price,
+        addeddate,
+        season,
+        collec,
+        image
+      }
+    )
+    .then(() => res.redirect("/viewall"))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;
