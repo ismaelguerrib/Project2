@@ -1,0 +1,16 @@
+#meteo-big-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#meteo-big-container > * {
+  flex: 1 100%;
+}
+
+h3 {
+  text-align: center;
+}
+
+#weather-box {
+  position: center;
+}
