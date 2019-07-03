@@ -5,8 +5,6 @@ const hbs = require("hbs");
 const router = new express.Router();
 const Type = require("../models/collection");
 
-//////GET/////
-
 ///////AFFICHAGE DYNAMIQUE//////////
 router.get("/viewall", (req, res) => {
   Promise.all([clothes.find(), collecModel.find()])
@@ -17,6 +15,19 @@ router.get("/viewall", (req, res) => {
       res.render("viewall", { clothesRes, collecRes });
     })
     .catch(err => console.log(err));
+});
+
+/////// AFFICHER TRI ////
+router.get("/getByTag/:id", (req, res) => {
+  Promise.all([
+    clothes.find({ collec: req.params.id }),
+    collecModel.find()
+  ]).then(idRes => {
+    console.log("YEEEEEE", idRes);
+    const clothesRes = idRes[0];
+    const collecRes = idRes[1];
+    res.render("viewall", { clothesRes, collecRes });
+  });
 });
 
 module.exports = router;

@@ -1,15 +1,28 @@
-import Axios from "axios";
+var weatherBox = document.getElementById("weather-box");
 
-const weatherAPI = Axios.create({
-  baseURL:
-    "http://api.meteomatics.com/2019-07-01T15:30:00ZP2D:PT1H/t_2m:C/50,10/json?model=mix"
-});
+///// Fonctions Generique ////
+
+function fromKtoC(k) {
+  return parseInt(k - 273.15);
+}
 
 function getWeather() {
-  weatherAPI
-    .get()
+  axios
+    .get(
+      "http://api.openweathermap.org/data/2.5/weather?id=6455259&appid=c2e55112c6c0f6ad92cb23e454a5f0c5"
+    )
     .then(apiRes => {
       console.log(apiRes);
+      const weatherDescription = apiRes.data.weather[0].description;
+      const temperature = fromKtoC(apiRes.data.main.temp);
+      weatherBox.insertAdjacentHTML(
+        "beforeend",
+        `<p>${weatherDescription}</p><p>${temperature}</p>`
+      );
     })
     .catch(err => console.log(err));
+}
+
+if (weatherBox) {
+  getWeather();
 }
