@@ -13,7 +13,7 @@ router.get("/dayclothes", (req, res, next) => {
     .populate("current")
     .then(dbRes => {
       console.log("@dayclothes get");
-      console.log(dbRes.current);
+      console.log(dbRes);
       res.render("dayclothes", { dayclothes: dbRes });
     })
     .catch(dbErr => {
