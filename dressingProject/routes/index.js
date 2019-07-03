@@ -4,6 +4,7 @@ const app = express();
 const User = require("../models/users");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
+const ensureLogin = require("connect-ensure-login");
 
 /* GET sign in page */
 

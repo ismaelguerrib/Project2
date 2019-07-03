@@ -1,41 +1,57 @@
 const express = require("express");
 const router = new express.Router();
-const user = require("../models/users");
+const User = require("../models/users");
+const passport = require("passport");
+const ensureLogin = require("connect-ensure-login");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
 
-router.post("/login", (req, res, next) => {
-  const theEmail = req.body.email;
-  const thePassword = req.body.password;
-
-  if (theEmail === "" || thePassword === "") {
-    res.render("login", {
-      errorMessage:
-        "Please enter your email adress and your password to sign up"
-    });
-    return;
-  }
-
-  user
-    .findOne({ email: theEmail })
-    .then(user => {
-      if (!user) {
-        res.render("login", { errorMessage: "the email doesn't exist" });
-        return;
-      }
-      if (bcrypt.compareSync(thePassword, user.password)) {
-        console.log(req.session);
-        req.session.currentUser = user;
-        res.redirect("/");
-      } else {
-        res.render("login"), { errorMessage: "incorrect password" };
-      }
-    })
-    .catch(error => {
-      next(error);
-    });
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
 });
 
-router.get("/login", (req, res) => {
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, user);
+  });
+});
+
+passport.use(
+  "local",
+  new LocalStrategy({ passReqToCallback: true }, (username, password, done) => {
+    User.findOne({ username: username }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+
+      return done(null, user);
+    });
+  })
+);
+
+router.get("/login", (req, res, next) => {
   res.render("login");
+});
+
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/homepage",
+    failureRedirect: "/"
+  })
+);
+
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("private", { user: req.user });
 });
 
 module.exports = router;

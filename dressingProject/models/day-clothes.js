@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const dayClothesSchema = new Schema({
-//   haut: {{clothes.id},required: true },
-//   bas: id,
-//   shoes: { type: String, required: true },
-//   accessoires :
-// });
+const dayClothes = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: "user" },
+  clothes: { type: [Schema.Types.ObjectId], ref: "clothes" },
+  day: { type: Date }
+});
 
-const dayClothes = mongoose.model("dayClothes", dayClothesSchema);
-module.exports = dayClothes;
+const dayClothesModel = mongoose.model("dayClothes", dayClothes);
+module.exports = dayClothesModel;

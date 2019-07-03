@@ -2,6 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const clothes = require("../models/clothes");
 const collection = require("../models/collection");
+const user = require("../models/users");
 
 router.post("/collection", (req, res, next) => {
   collection
