@@ -18,17 +18,37 @@ router.get("/delete/:id", (req, res) => {
 });
 
 router.get("/add/:id", (req, res) => {
-  console.log("===========================");
-
   const day = new Date().getDay();
   dayClothes
-    .findOne({ day, user: req.session.currentUser._id })
+    .findOne({
+      day,
+      user: req.user._id
+    })
     .then(dbRes => {
       if (!dbRes) {
+        dayClothes.create({
+          user: req.user._id,
+          current: req.params.id,
+          day
+        });
+        res.redirect("/viewall");
       } else {
-        console.log("todo");
+        dayClothes.findByIdAndUpdate(
+          dbRes,
+          {
+            $push: { current: req.params.id }
+          },
+          { safe: true, upsert: true },
+          function(err, doc) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("blablabla");
+            }
+          }
+        );
+        res.redirect("/viewall");
       }
-      console.log(dbRes);
     })
     .catch(dbErr => console.log(dbErr));
 });

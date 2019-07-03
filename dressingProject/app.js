@@ -38,16 +38,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+function checkLoginStatus(req, res, next) {
+  res.locals.isLoggedIn = req.isAuthenticated();
+  if (!req.user) {
+    req.user = {
+      _id: "5d1c98b236f67d1615711266"
+    };
+  }
+  res.locals.user = req.user;
+  // console.log(req.user);
+  next();
+}
+
 app.use(
   session({
     secret: "our-passport-local-strategy-app",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 600000 }
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(checkLoginStatus);
 
 // Express View engine setup
 
@@ -78,6 +92,7 @@ const viewall = require("./routes/viewall.js");
 const viewone = require("./routes/viewone.js");
 const dashboard = require("./routes/dashboard.js");
 const collection = require("./routes/collection");
+const map = require("./routes/map");
 
 app.use("/", index);
 app.use(manage);
@@ -88,5 +103,6 @@ app.use(viewone);
 app.use(dayclothes);
 app.use(dashboard);
 app.use(collection);
+app.use(map);
 
 module.exports = app;

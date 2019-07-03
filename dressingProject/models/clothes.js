@@ -13,5 +13,5 @@ const clothesSchema = new Schema({
   collec: { type: [Schema.Types.ObjectId], ref: "collection" }
 });
 
-const Clothes = mongoose.model("Clothes", clothesSchema);
+const Clothes = mongoose.model("clothes", clothesSchema);
 module.exports = Clothes;

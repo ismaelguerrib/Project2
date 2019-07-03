@@ -8,6 +8,7 @@ const ensureLogin = require("connect-ensure-login");
 
 /* GET sign in page */
 
+// signup : register new user
 router.post("/", (req, res, next) => {
   console.log(req.body);
   const name = req.body.name;
