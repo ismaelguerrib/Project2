@@ -21,21 +21,24 @@ passport.deserializeUser((id, cb) => {
 
 passport.use(
   "local",
-  new LocalStrategy({ passReqToCallback: true }, (username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      }
-      if (!bcrypt.compareSync(password, user.password)) {
-        return done(null, false, { message: "Incorrect password" });
-      }
+  new LocalStrategy(
+    { passReqToCallback: true },
+    (req, username, password, done) => {
+      User.findOne({ username: username }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, { message: "Incorrect username" });
+        }
+        if (!bcrypt.compareSync(password, user.password)) {
+          return done(null, false, { message: "Incorrect password" });
+        }
 
-      return done(null, user);
-    });
-  })
+        return done(null, user);
+      });
+    }
+  )
 );
 
 router.get("/login", (req, res, next) => {
@@ -52,6 +55,11 @@ router.post(
 
 router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("private", { user: req.user });
+});
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/login");
 });
 
 module.exports = router;

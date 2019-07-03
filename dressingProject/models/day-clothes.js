@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const dayClothes = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "user" },
   clothes: { type: [Schema.Types.ObjectId], ref: "clothes" },
-  day: { type: Date }
+  day: { type: Date, required: true }
 });
 
 const dayClothesModel = mongoose.model("dayClothes", dayClothes);
