@@ -23,10 +23,11 @@
         </div>
         <div class="form-item-wrapper flexed-item">
             <label for="cloth-type" class="label-ref label">Type</label>
-            <select name="type" id="secondary_category" class="select">
+            <select name="typeCat" id="secondary_category" class="select">
                 <option value="">Create Youre Clothes Type...</option>
-                <option value="Top">Top</option>
-                <option value="Jean">Jean</option>
+                {{#each types}}
+                <option value="{{this._id}}"> {{this.name}}</option>
+                {{/each}}
             </select>
 
         </div>
@@ -52,7 +53,7 @@
             <select name="collec" id="secondary_category" class="select">
 
                 <option value="">Choose a collection to youre clothe...</option>
-                {{#each dbRes}}
+                {{#each collection}}
                 <option value="{{this._id}}"> {{this.label}}</option>
                 {{/each}}
             </select>

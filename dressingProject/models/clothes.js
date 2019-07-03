@@ -5,12 +5,12 @@ const clothesSchema = new Schema({
   name: { type: String },
   brand: String,
   size: String,
-  type: { type: String, enum: ["Top", "Jean"] },
+  typeCat: { type: Schema.Types.ObjectId, ref: "type" },
   price: { type: Number },
   addeddate: { type: Date },
   season: { type: String },
   image: String,
-  collec: { type: [Schema.Types.ObjectId], ref: "collection" }
+  collec: { type: Schema.Types.ObjectId, ref: "collection" }
 });
 
 const Clothes = mongoose.model("Clothes", clothesSchema);

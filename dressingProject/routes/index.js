@@ -51,6 +51,3 @@ router.get("/homepage", (req, res, next) => {
 });
 
 module.exports = router;
-
-//////////METEOOOO/////////
-// api.openweathermap.org/data/2.5/forecast?id=6455259&appid=c2e55112c6c0f6ad92cb23e454a5f0c5
