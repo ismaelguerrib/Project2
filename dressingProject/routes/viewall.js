@@ -48,4 +48,11 @@ router.get("/getByTypes/:id", (req, res) => {
   });
 });
 
+router.get("/clothes/api", (req, res) => {
+  clothes
+    .find()
+    .then(dbRes => res.send(dbRes))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;
