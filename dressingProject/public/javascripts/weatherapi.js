@@ -15,9 +15,11 @@ function getWeather() {
       console.log(apiRes);
       const weatherDescription = apiRes.data.weather[0].description;
       const temperature = fromKtoC(apiRes.data.main.temp);
+      const temperatureMax = fromKtoC(apiRes.data.main.temp_max);
+      const temperatureMin = fromKtoC(apiRes.data.main.temp_min);
       weatherBox.insertAdjacentHTML(
         "beforeend",
-        `<p>${weatherDescription}</p><p>${temperature}</p>`
+        `<div class="api-container"><p class="weatherDescription">Today's weather : ${weatherDescription}</p><p class="temperature">Current Temperature : ${temperature}</p><p class="temperatureMax">Maximum : ${temperatureMax}</p><p class="temperatureMin">Minimum : ${temperatureMin}</p></div>`
       );
     })
     .catch(err => console.log(err));

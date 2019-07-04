@@ -95,12 +95,12 @@ const collection = require("./routes/collection");
 const map = require("./routes/map");
 
 app.use("/", index);
+app.use(dayclothes);
 app.use(manage);
 app.use(login);
 app.use(homepage);
 app.use(viewall);
 app.use(viewone);
-app.use(dayclothes);
 app.use(dashboard);
 app.use(collection);
 app.use(map);
