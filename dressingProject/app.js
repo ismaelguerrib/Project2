@@ -79,8 +79,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 hbs.registerPartials(__dirname + "/views/partials");
 
-// default value for title local
+// default value for title local and url variables
 app.locals.title = "Dressing Project";
+app.locals.site_url = process.env.SITE_URL;
 
 ///// CONFIG /////////
 const index = require("./routes/index");
