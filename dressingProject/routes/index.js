@@ -48,8 +48,4 @@ router.get("/", (req, res, next) => {
 });
 /* GET home page */
 
-router.get("/homepage", (req, res, next) => {
-  res.render("homepage");
-});
-
 module.exports = router;
